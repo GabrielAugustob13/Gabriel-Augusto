@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Augusto | Portfólio Criativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark: #1a1a2e;
+            --accent: #d90429;
+            --accent-light: #ff2b4a;
+            --light: #f8f9fa;
+            --gray: #e9ecef;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
+            background-attachment: fixed;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to right, var(--dark), #16213e);
+            color: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .tagline {
+            font-style: italic;
+            opacity: 0.9;
+            margin: 10px 0 20px;
+            font-size: 1.2rem;
+            position: relative;
+            max-width: 600px;
+        }
+        
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            position: relative;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 15px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+        }
+        
+        h2 {
+            color: var(--dark);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h2 i {
+            color: var(--accent);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .project-card {
+            border: 1px solid var(--gray);
+            border-radius: 12px;
+            padding: 25px;
+            transition: var(--transition);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+            border-color: var(--accent-light);
+        }
+        
+        .project-card h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .genre-tag {
+            display: inline-block;
+            background: var(--accent-light);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            color: white !important;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(217, 4, 41, 0.4);
+        }
+        
+        .btn i {
+            font-size: 1.1rem;
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        ul li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        ul li::before {
+            content: "▹";
+            color: var(--accent);
+            position: absolute;
+            left: -20px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .skill-card {
+            background: var(--gray);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .skill-card:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .skill-card i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .skill-card:hover i {
+            color: white;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(to right, var(--dark), #16213e);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            background: #128C7E;
+        }
+        
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-container">
+            <img src="https://imgur.com/a/IUfwl0f" class="profile-pic" alt="Gabriel Augusto">
+        </div>
+        <h1>GABRIEL AUGUSTO</h1>
+        <p class="tagline">Roteirista | Escritor | Desenvolvedor de Narrativas Interativas</p>
+        <div class="contact">
+            <div class="contact-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span>(22) 99744-6478</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>gabrielaugustobb13@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Rio de Janeiro</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="section" id="about">
+        <h2><i class="fas fa-user"></i> SOBRE MIM</h2>
+        <p>Escritor com 2 livros publicados e formado em Desenvolvimento de Jogos. Minha missão é transformar ideias em histórias vibrantes e imersivas, seja em livros, jogos ou outras mídias. Minha bagagem diversificada (Inglês Avançado, Massoterapia, Hipnose) me permite criar personagens complexos e diálogos verossímeis com profundidade psicológica única.</p>
+    </section>
+
+    <section class="section" id="books">
+        <h2><i class="fas fa-book"></i> LIVROS PUBLICADOS</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Cercados pelo Destino</h3>
+                <span class="genre-tag">Ficção Pós-Apocalíptica</span>
+                <p>Uma narrativa intensa sobre sobrevivência e humanidade em um mundo devastado por zumbis, explorando os limites da condição humana em situações extremas.</p>
+                <a href="https://clubedeautores.com.br/livro/cercados-pelo-destino-2" target="_blank" class="btn">
+                    <i class="fas fa-shopping-cart"></i> Comprar na Clube de Autores
+                </a>
+            </div>
+            <div class="project-card">
+                <h3>Ecos da Alma</h3>
+                <span class="genre-tag">Poesia</span>
+                <p>Coletânea de poemas que exploram as profundezas das emoções humanas e reflexões existenciais, numa jornada lírica pela condição humana.</p>
+                <a href="https://loja.uiclap.com/titulo/ua70247/?srsltid=AfmBOoqP-UqHo0FeL9y1Nuw1_KOa4qYy8il6wYiJrUNEusn58taJVFeF" target="_blank" class="btn">
+                    <i class="fas fa-book-open"></i> Comprar na UICLAP
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="games">
+        <h2><i class="fas fa-gamepad"></i> PROJETOS EM NARRATIVA INTERATIVA</h2>
+        <div class="project-card">
+            <h3>Projetos Acadêmicos de Desenvolvimento de Jogos</h3>
+            <p><strong>Universidade Estácio de Sá (2019-2024)</strong></p>
+            <ul>
+                <li>Design narrativo e construção de worldbuilding imersivo</li>
+                <li>Criação de mecânicas de jogo integradas à progressão da história</li>
+                <li>Desenvolvimento de storytelling interativo com múltiplos finais e ramificações</li>
+                <li>Desenvolvimento de diálogos complexos com sistemas de influência</li>
+            </ul>
+            <p class="btn" style="background: #6c757d; cursor: not-allowed; opacity: 0.8;">
+                <i class="fas fa-lock"></i> Projetos em desenvolvimento
+            </p>
+        </div>
+    </section>
+
+    <section class="section" id="stories">
+        <h2><i class="fas fa-pen-fancy"></i> CONTOS AUTORAIS</h2>
+        <p>Desenvolvimento de narrativas curtas em múltiplos gêneros, explorando diversas estruturas narrativas:</p>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Terror Psicológico</h3>
+                <p>Atmosferas claustrofóbicas e suspense que exploram os medos primais humanos, com elementos sobrenaturais e psicológicos.</p>
+            </div>
+            <div class="project-card">
+                <h3>Drama Contemporâneo</h3>
+                <p>Conflitos humanos e relações complexas em cenários urbanos, abordando temas sociais e emocionais profundos.</p>
+            </div>
+            <div class="project-card">
+                <h3>Fantasia Épica</h3>
+                <p>Worldbuilding original com sistemas de magia complexos e jornadas de heróis em cenários medievais fantásticos.</p>
+            </div>
+        </div>
+        <!-- Botão de coletânea de contos removido conforme solicitado -->
+    </section>
+
+    <section class="section" id="skills">
+        <h2><i class="fas fa-tools"></i> FERRAMENTAS & HABILIDADES</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-scroll"></i>
+                <h3>Roteirização</h3>
+                <p>Twine, Inky, Articy:Draft</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-gamepad"></i>
+                <h3>Design Interativo</h3>
+                <p>Narrativa ramificada, escolhas significativas</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-book"></i>
+                <h3>Escrita Criativa</h3>
+                <p>Romance, contos, poesia</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-brain"></i>
+                <h3>Psicologia</h3>
+                <p>Desenvolvimento de personagens complexos</p>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-language"></i>
+                <h3>Idiomas</h3>
+                <p>Inglês Avançado (tradução/localização)</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3>Vamos criar histórias juntos?</h3>
+        <p>Estou disponível para projetos de roteirização, escrita criativa e desenvolvimento narrativo.</p>
+        
+        <a href="https://wa.me/5522997446478" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Contato pelo WhatsApp
+        </a>
+        
+        <div class="contact" style="margin-top: 25px; justify-content: center;">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>gabrielaugustobb13@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span>(22) 99744-6478</span>
+            </div>
+        </div>
+        
+        <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">
+            &copy; 2024 Gabriel Augusto. Todos os direitos reservados.
+        </p>
+    </footer>
+</body>
+</html>
