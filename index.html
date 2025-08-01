@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriel Augusto | Portfólio Criativo</title>
+    <title>Gabriel Augusto | Portfólio Premium</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --dark: #1a1a2e;
             --accent: #d90429;
             --accent-light: #ff2b4a;
             --light: #f8f9fa;
-            --gray: #e9ecef;
-            --transition: all 0.3s ease;
+            --gradient: linear-gradient(135deg, #d90429, #8a0f2e);
+            --gradient-light: linear-gradient(135deg, #ff2b4a, #d90429);
+            --transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         
         * {
@@ -22,111 +25,176 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.8;
             color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             background-attachment: fixed;
             padding: 20px;
-            max-width: 1200px;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(217, 4, 41, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(217, 4, 41, 0.15) 0%, transparent 20%);
+            z-index: -2;
+        }
+        
+        /* Elementos interativos */
+        .interactive-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.6;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); }
+            100% { transform: translateY(-100vh) translateX(50px) rotate(360deg); }
+        }
+        
+        .container {
+            max-width: 1400px;
             margin: 0 auto;
         }
         
+        /* Header estilizado */
         header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(to right, var(--dark), #16213e);
+            padding: 100px 20px 60px;
             color: white;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 40px;
             position: relative;
             overflow: hidden;
+            border-radius: 20px;
+            background: rgba(26, 26, 46, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-top: 30px;
+            animation: fadeIn 1s ease-out;
         }
         
-        .profile-container {
-            position: relative;
-            margin-bottom: 25px;
-        }
-        
-        .profile-pic {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid rgba(255,255,255,0.2);
-            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         header::before {
-            content: "";
+            content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
-            transform: rotate(30deg);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
         }
         
         h1 {
             margin: 0;
-            font-size: 2.8rem;
+            font-size: 4.5rem;
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
             position: relative;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            display: inline-block;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ff8a00, #ff2b4a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
         }
         
         .tagline {
             font-style: italic;
             opacity: 0.9;
-            margin: 10px 0 20px;
-            font-size: 1.2rem;
+            margin: 20px 0 30px;
+            font-size: 1.8rem;
             position: relative;
-            max-width: 600px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            color: #fff;
+            font-weight: 300;
         }
         
         .contact {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 30px;
             flex-wrap: wrap;
-            margin-top: 15px;
+            margin-top: 30px;
             position: relative;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
             background: rgba(255,255,255,0.15);
-            padding: 8px 15px;
-            border-radius: 30px;
+            padding: 12px 25px;
+            border-radius: 50px;
             backdrop-filter: blur(5px);
             transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.1rem;
+            color: white;
         }
         
         .contact-item:hover {
             background: rgba(255,255,255,0.25);
-            transform: translateY(-3px);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
         .section {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            margin-bottom: 30px;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
             position: relative;
             overflow: hidden;
             transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.5);
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        
+        .section.animate {
+            animation: fadeUp 0.8s forwards;
+        }
+        
+        @keyframes fadeUp {
+            to { transform: translateY(0); opacity: 1; }
         }
         
         .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.95);
         }
         
         .section::before {
@@ -136,330 +204,988 @@
             left: 0;
             height: 5px;
             width: 100%;
-            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            background: var(--gradient);
         }
         
         h2 {
             color: var(--dark);
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            padding-bottom: 15px;
+            margin-bottom: 35px;
+            font-size: 2.8rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            letter-spacing: -1px;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 5px;
+            background: var(--gradient);
+            border-radius: 3px;
         }
         
         h2 i {
-            color: var(--accent);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.2rem;
         }
         
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
         }
         
         .project-card {
-            border: 1px solid var(--gray);
-            border-radius: 12px;
-            padding: 25px;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 20px;
+            padding: 40px;
             transition: var(--transition);
             background: white;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateY(5deg);
+            cursor: pointer;
         }
         
         .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateY(0) translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             border-color: var(--accent-light);
         }
         
         .project-card h3 {
             color: var(--dark);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-size: 1.9rem;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .genre-tag {
             display: inline-block;
-            background: var(--accent-light);
+            background: var(--gradient);
             color: white;
-            padding: 3px 12px;
+            padding: 7px 20px;
             border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 12px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            gap: 10px;
+            background: var(--gradient);
             color: white !important;
-            padding: 12px 25px;
-            border-radius: 30px;
+            padding: 18px 35px;
+            border-radius: 50px;
             text-decoration: none;
-            margin-top: 15px;
+            margin-top: 25px;
             font-weight: 600;
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+            box-shadow: 0 10px 30px rgba(217, 4, 41, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(217, 4, 41, 0.4);
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(217, 4, 41, 0.4);
         }
         
         .btn i {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
         }
         
         ul {
-            padding-left: 20px;
-            margin: 15px 0;
+            padding-left: 25px;
+            margin: 25px 0;
         }
         
         ul li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             position: relative;
+            padding-left: 30px;
+            font-size: 1.1rem;
+            color: #444;
         }
         
         ul li::before {
             content: "▹";
             color: var(--accent);
             position: absolute;
-            left: -20px;
+            left: 0;
+            font-size: 1.6rem;
+            line-height: 1;
         }
         
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .skill-card {
-            background: var(--gray);
-            padding: 15px;
-            border-radius: 10px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
             text-align: center;
             transition: var(--transition);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.03);
+            cursor: pointer;
+            transform: translateY(0);
+        }
+        
+        .skill-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
         }
         
         .skill-card:hover {
-            background: var(--accent);
-            color: white;
-            transform: scale(1.05);
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
         }
         
         .skill-card i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--accent);
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: var(--transition);
         }
         
         .skill-card:hover i {
+            transform: scale(1.2);
+        }
+        
+        .skill-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: var(--gradient);
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: calc(50% - 50px);
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .timeline-item.animate {
+            animation: fadeUp 0.8s forwards;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: calc(50% + 50px);
+        }
+        
+        .timeline-content {
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            position: relative;
+            border-left: 6px solid var(--accent);
+            transition: var(--transition);
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            right: -15px;
+            width: 25px;
+            height: 25px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 8px rgba(217, 4, 41, 0.2);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: auto;
+            left: -15px;
+        }
+        
+        .timeline-year {
+            display: inline-block;
+            background: var(--gradient);
             color: white;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(217, 4, 41, 0.3);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+            cursor: pointer;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .stat-card i {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--dark);
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* Mini Jogo Interativo */
+        .interactive-game {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 60px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .game-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .story-path {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .path-choice {
+            padding: 25px 40px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: 0 10px 25px rgba(217, 4, 41, 0.3);
+        }
+        
+        .path-choice:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(217, 4, 41, 0.4);
+        }
+        
+        .story-outcome {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(26, 26, 46, 0.05);
+            border-radius: 15px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--dark);
+            transition: all 0.5s ease;
         }
         
         footer {
             text-align: center;
-            margin-top: 40px;
-            padding: 30px;
-            background: linear-gradient(to right, var(--dark), #16213e);
+            margin-top: 100px;
+            padding: 70px 30px;
+            background: var(--gradient);
             color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: white;
         }
         
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             background: #25D366;
             color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
+            padding: 20px 45px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 20px;
+            margin-top: 40px;
             transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.3);
+            position: relative;
+            overflow: hidden;
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .whatsapp-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .whatsapp-btn:hover::before {
+            left: 100%;
         }
         
         .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transform: translateY(-7px);
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.4);
             background: #128C7E;
         }
         
-        @media (max-width: 768px) {
+        .floating-icon {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 70px;
+            height: 70px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 10px 30px rgba(217, 4, 41, 0.4);
+            z-index: 100;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .floating-icon:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(217, 4, 41, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(217, 4, 41, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(217, 4, 41, 0); }
+        }
+        
+        @media (max-width: 1100px) {
+            .timeline::before {
+                left: 40px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 90px);
+                padding-left: 80px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-content::before {
+                left: -15px;
+                right: auto;
+            }
+        }
+        
+        @media (max-width: 900px) {
             .project-grid {
                 grid-template-columns: 1fr;
             }
             
-            .contact {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
+            .section {
+                padding: 40px 30px;
             }
             
             h1 {
-                font-size: 2.2rem;
+                font-size: 3.5rem;
             }
             
-            .profile-pic {
-                width: 150px;
-                height: 150px;
+            .tagline {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                bottom: 30px;
+                right: 30px;
+            }
+            
+            .story-path {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="profile-container">
-            <img src="https://imgur.com/a/IUfwl0f" class="profile-pic" alt="Gabriel Augusto">
-        </div>
-        <h1>GABRIEL AUGUSTO</h1>
-        <p class="tagline">Roteirista | Escritor | Desenvolvedor de Narrativas Interativas</p>
-        <div class="contact">
-            <div class="contact-item">
-                <i class="fas fa-mobile-alt"></i>
-                <span>(22) 99744-6478</span>
+    <!-- Fundo interativo com partículas -->
+    <div class="interactive-bg" id="interactive-bg"></div>
+    
+    <div class="container">
+        <header>
+            <h1>GABRIEL AUGUSTO</h1>
+            <p class="tagline">Roteirista | Escritor | Desenvolvedor de Narrativas Interativas</p>
+            <div class="contact">
+                <div class="contact-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>(22) 99744-6478</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>gabrielaugustobb13@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Rio de Janeiro</span>
+                </div>
             </div>
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>gabrielaugustobb13@gmail.com</span>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Rio de Janeiro</span>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <section class="section" id="about">
-        <h2><i class="fas fa-user"></i> SOBRE MIM</h2>
-        <p>Escritor com 2 livros publicados e formado em Desenvolvimento de Jogos. Minha missão é transformar ideias em histórias vibrantes e imersivas, seja em livros, jogos ou outras mídias. Minha bagagem diversificada (Inglês Avançado, Massoterapia, Hipnose) me permite criar personagens complexos e diálogos verossímeis com profundidade psicológica única.</p>
-    </section>
-
-    <section class="section" id="books">
-        <h2><i class="fas fa-book"></i> LIVROS PUBLICADOS</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>Cercados pelo Destino</h3>
-                <span class="genre-tag">Ficção Pós-Apocalíptica</span>
-                <p>Uma narrativa intensa sobre sobrevivência e humanidade em um mundo devastado por zumbis, explorando os limites da condição humana em situações extremas.</p>
-                <a href="https://clubedeautores.com.br/livro/cercados-pelo-destino-2" target="_blank" class="btn">
-                    <i class="fas fa-shopping-cart"></i> Comprar na Clube de Autores
-                </a>
+        <section class="section" id="about">
+            <h2><i class="fas fa-user"></i> SOBRE MIM</h2>
+            <p>Escritor com 2 livros publicados e formado em Desenvolvimento de Jogos. Minha missão é transformar ideias em histórias vibrantes e imersivas, seja em livros, jogos ou outras mídias. Minha bagagem diversificada (Inglês Avançado, Marketing, Copywriting, Edição de Fotos e Vídeos) me permite criar experiências narrativas completas e impactantes.</p>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <i class="fas fa-book"></i>
+                    <div class="stat-number">2</div>
+                    <div class="stat-title">Livros Publicados</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-gamepad"></i>
+                    <div class="stat-number">5+</div>
+                    <div class="stat-title">Projetos Interativos</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-pen"></i>
+                    <div class="stat-number">9</div>
+                    <div class="stat-title">Anos de Escrita</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-layer-group"></i>
+                    <div class="stat-number">7</div>
+                    <div class="stat-title">Habilidades Diversas</div>
+                </div>
             </div>
-            <div class="project-card">
-                <h3>Ecos da Alma</h3>
-                <span class="genre-tag">Poesia</span>
-                <p>Coletânea de poemas que exploram as profundezas das emoções humanas e reflexões existenciais, numa jornada lírica pela condição humana.</p>
-                <a href="https://loja.uiclap.com/titulo/ua70247/?srsltid=AfmBOoqP-UqHo0FeL9y1Nuw1_KOa4qYy8il6wYiJrUNEusn58taJVFeF" target="_blank" class="btn">
-                    <i class="fas fa-book-open"></i> Comprar na UICLAP
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="games">
-        <h2><i class="fas fa-gamepad"></i> PROJETOS EM NARRATIVA INTERATIVA</h2>
-        <div class="project-card">
-            <h3>Projetos Acadêmicos de Desenvolvimento de Jogos</h3>
-            <p><strong>Universidade Estácio de Sá (2019-2024)</strong></p>
-            <ul>
-                <li>Design narrativo e construção de worldbuilding imersivo</li>
-                <li>Criação de mecânicas de jogo integradas à progressão da história</li>
-                <li>Desenvolvimento de storytelling interativo com múltiplos finais e ramificações</li>
-                <li>Desenvolvimento de diálogos complexos com sistemas de influência</li>
-            </ul>
-            <p class="btn" style="background: #6c757d; cursor: not-allowed; opacity: 0.8;">
-                <i class="fas fa-lock"></i> Projetos em desenvolvimento
+        <section class="section" id="books">
+            <h2><i class="fas fa-book"></i> LIVROS PUBLICADOS</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Cercados pelo Destino</h3>
+                    <span class="genre-tag">Ficção Pós-Apocalíptica</span>
+                    <p>Uma narrativa intensa sobre sobrevivência e humanidade em um mundo devastado por zumbis, explorando os limites da condição humana em situações extremas.</p>
+                    <a href="https://clubedeautores.com.br/livro/cercados-pelo-destino-2" target="_blank" class="btn">
+                        <i class="fas fa-shopping-cart"></i> Comprar na Clube de Autores
+                    </a>
+                </div>
+                <div class="project-card">
+                    <h3>Ecos da Alma</h3>
+                    <span class="genre-tag">Poesia</span>
+                    <p>Coletânea de poemas que exploram as profundezas das emoções humanas e reflexões existenciais, numa jornada lírica pela condição humana.</p>
+                    <a href="https://loja.uiclap.com/titulo/ua70247/?srsltid=AfmBOoqP-UqHo0FeL9y1Nuw1_KOa4qYy8il6wYiJrUNEusn58taJVFeF" target="_blank" class="btn">
+                        <i class="fas fa-book-open"></i> Comprar na UICLAP
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="experience">
+            <h2><i class="fas fa-briefcase"></i> EXPERIÊNCIA PROFISSIONAL</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">9 Anos</span>
+                        <h3>Escritor & Criador de Conteúdo</h3>
+                        <ul>
+                            <li>Desenvolvimento de narrativas em diversos gêneros</li>
+                            <li>Publicação de 2 livros autorais</li>
+                            <li>Copywriting e criação de conteúdo para redes sociais</li>
+                            <li>Edição de fotos e vídeos para projetos criativos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">3 Anos</span>
+                        <h3>Balconista de Farmácia</h3>
+                        <ul>
+                            <li>Atendimento ao cliente com excelência</li>
+                            <li>Gestão de estoque e controle de vendas</li>
+                            <li>Organização de produtos e ambiente de trabalho</li>
+                            <li>Desenvolvimento de comunicação eficaz</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">6 Meses</span>
+                        <h3>Barman</h3>
+                        <ul>
+                            <li>Preparação de drinks e coquetéis</li>
+                            <li>Atendimento ao cliente em ambiente noturno</li>
+                            <li>Gestão de estoque de bebidas</li>
+                            <li>Manutenção da limpeza e organização do bar</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-year">4 Anos</span>
+                        <h3>Marketing & Conteúdo Digital</h3>
+                        <ul>
+                            <li>Criação de estratégias de conteúdo</li>
+                            <li>Copywriting para campanhas publicitárias</li>
+                            <li>Edição de fotos e vídeos para mídias sociais</li>
+                            <li>Gestão de redes sociais e engajamento</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <h2><i class="fas fa-tools"></i> HABILIDADES & ESPECIALIDADES</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-scroll"></i>
+                    <h3>Roteirização</h3>
+                    <p>Twine, Inky, Articy:Draft</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Design Interativo</h3>
+                    <p>Narrativa ramificada, escolhas significativas</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Escrita Criativa</h3>
+                    <p>Romance, contos, poesia</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Psicologia</h3>
+                    <p>Desenvolvimento de personagens complexos</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Marketing</h3>
+                    <p>Estratégias de conteúdo e engajamento</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-feather"></i>
+                    <h3>Copywriting</h3>
+                    <p>Redação persuasiva e criativa</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-camera"></i>
+                    <h3>Edição de Fotos</h3>
+                    <p>Adobe Photoshop, Lightroom</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Edição de Vídeos</h3>
+                    <p>Adobe Premiere, After Effects</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini Jogo Interativo -->
+        <section class="section" id="interactive">
+            <h2><i class="fas fa-gamepad"></i> EXPERIÊNCIA INTERATIVA</h2>
+            <p>Teste minhas habilidades de narrativa com este pequeno jogo de escolhas:</p>
+            
+            <div class="interactive-game">
+                <h3 class="game-title">Escolha Seu Próprio Destino</h3>
+                <p id="story-text">Você acorda em uma cidade pós-apocalíptica. O ar está pesado e silencioso. Ao seu redor, prédios em ruínas e veículos abandonados. Você ouve um barulho vindo de um beco escuro. O que você faz?</p>
+                
+                <div class="story-path">
+                    <div class="path-choice" onclick="choosePath(1)">Investigar o beco</div>
+                    <div class="path-choice" onclick="choosePath(2)">Procurar abrigo</div>
+                    <div class="path-choice" onclick="choosePath(3)">Seguir pela rua principal</div>
+                </div>
+                
+                <div class="story-outcome" id="story-outcome">
+                    Sua decisão moldará a história...
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <h3>PRONTO PARA TRANSFORMAR SUA IDEIA EM UMA HISTÓRIA INESQUECÍVEL?</h3>
+            <p>Entre em contato agora mesmo para discutirmos seu projeto criativo!</p>
+            
+            <a href="https://wa.me/5522997446478" class="whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> Vamos Conversar!
+            </a>
+            
+            <div class="contact" style="margin-top: 50px; justify-content: center;">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>gabrielaugustobb13@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>(22) 99744-6478</span>
+                </div>
+            </div>
+            
+            <p style="margin-top: 50px; opacity: 0.8; font-size: 1rem;">
+                &copy; 2024 Gabriel Augusto. Todos os direitos reservados.
             </p>
-        </div>
-    </section>
+        </footer>
 
-    <section class="section" id="stories">
-        <h2><i class="fas fa-pen-fancy"></i> CONTOS AUTORAIS</h2>
-        <p>Desenvolvimento de narrativas curtas em múltiplos gêneros, explorando diversas estruturas narrativas:</p>
-        <div class="project-grid">
-            <div class="project-card">
-                <h3>Terror Psicológico</h3>
-                <p>Atmosferas claustrofóbicas e suspense que exploram os medos primais humanos, com elementos sobrenaturais e psicológicos.</p>
-            </div>
-            <div class="project-card">
-                <h3>Drama Contemporâneo</h3>
-                <p>Conflitos humanos e relações complexas em cenários urbanos, abordando temas sociais e emocionais profundos.</p>
-            </div>
-            <div class="project-card">
-                <h3>Fantasia Épica</h3>
-                <p>Worldbuilding original com sistemas de magia complexos e jornadas de heróis em cenários medievais fantásticos.</p>
-            </div>
-        </div>
-        <!-- Botão de coletânea de contos removido conforme solicitado -->
-    </section>
-
-    <section class="section" id="skills">
-        <h2><i class="fas fa-tools"></i> FERRAMENTAS & HABILIDADES</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <i class="fas fa-scroll"></i>
-                <h3>Roteirização</h3>
-                <p>Twine, Inky, Articy:Draft</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-gamepad"></i>
-                <h3>Design Interativo</h3>
-                <p>Narrativa ramificada, escolhas significativas</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-book"></i>
-                <h3>Escrita Criativa</h3>
-                <p>Romance, contos, poesia</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-brain"></i>
-                <h3>Psicologia</h3>
-                <p>Desenvolvimento de personagens complexos</p>
-            </div>
-            <div class="skill-card">
-                <i class="fas fa-language"></i>
-                <h3>Idiomas</h3>
-                <p>Inglês Avançado (tradução/localização)</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <h3>Vamos criar histórias juntos?</h3>
-        <p>Estou disponível para projetos de roteirização, escrita criativa e desenvolvimento narrativo.</p>
-        
-        <a href="https://wa.me/5522997446478" class="whatsapp-btn">
-            <i class="fab fa-whatsapp"></i> Contato pelo WhatsApp
+        <a href="#" class="floating-icon">
+            <i class="fas fa-arrow-up"></i>
         </a>
+    </div>
+
+    <script>
+        // Cria partículas interativas para o fundo
+        function createParticles() {
+            const bg = document.getElementById('interactive-bg');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Posição e tamanho aleatórios
+                const size = Math.random() * 15 + 5;
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.bottom = `-${size}px`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Cor aleatória
+                const colors = ['#d90429', '#ff2b4a', '#ff8a00', '#8a0f2e'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.backgroundColor = color;
+                
+                bg.appendChild(particle);
+            }
+        }
         
-        <div class="contact" style="margin-top: 25px; justify-content: center;">
-            <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <span>gabrielaugustobb13@gmail.com</span>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-mobile-alt"></i>
-                <span>(22) 99744-6478</span>
-            </div>
-        </div>
+        // Mini jogo interativo
+        const storyPaths = [
+            {
+                text: "Você decide investigar o beco escuro. Ao entrar, encontra um grupo de sobreviventes que parecem amigáveis. Eles oferecem comida e abrigo.",
+                choices: [
+                    "Aceitar a ajuda",
+                    "Continuar sozinho",
+                    "Perguntar sobre a cidade"
+                ],
+                outcomes: [
+                    "Você passa a noite com os sobreviventes e descobre informações valiosas sobre a cidade.",
+                    "Você agradece, mas segue seu caminho sozinho, preferindo confiar apenas em si mesmo.",
+                    "Os sobreviventes compartilham histórias sobre os perigos que rondam a cidade após o anoitecer."
+                ]
+            },
+            {
+                text: "Você decide procurar abrigo. Encontra um prédio comercial que parece seguro. Ao entrar, percebe que não está sozinho.",
+                choices: [
+                    "Explorar o prédio",
+                    "Sair rapidamente",
+                    "Esconder-se e observar"
+                ],
+                outcomes: [
+                    "Você encontra suprimentos valiosos no segundo andar, mas ouve passos se aproximando.",
+                    "Você sai do prédio, preferindo não arriscar um encontro inesperado.",
+                    "Você se esconde e observa um pequeno grupo de pessoas passando pelo corredor."
+                ]
+            },
+            {
+                text: "Você segue pela rua principal. Ao longe, vê um veículo em movimento. Parece ser uma patrulha militar.",
+                choices: [
+                    "Sinalizar para o veículo",
+                    "Esconder-se e observar",
+                    "Continuar andando normalmente"
+                ],
+                outcomes: [
+                    "O veículo para e soldados oferecem ajuda. Eles estão indo para uma zona segura.",
+                    "Você observa de longe e percebe que o veículo está sendo seguido por criaturas.",
+                    "Você continua seu caminho, mas o veículo passa por você sem parar."
+                ]
+            }
+        ];
         
-        <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">
-            &copy; 2024 Gabriel Augusto. Todos os direitos reservados.
-        </p>
-    </footer>
+        let currentPath = -1;
+        
+        function choosePath(path) {
+            if (currentPath === -1) {
+                // Primeira escolha
+                currentPath = path - 1;
+                document.getElementById('story-text').textContent = storyPaths[currentPath].text;
+                
+                // Atualizar as escolhas
+                const choicesContainer = document.querySelector('.story-path');
+                choicesContainer.innerHTML = '';
+                
+                storyPaths[currentPath].choices.forEach((choice, index) => {
+                    const choiceBtn = document.createElement('div');
+                    choiceBtn.classList.add('path-choice');
+                    choiceBtn.textContent = choice;
+                    choiceBtn.onclick = () => showOutcome(index);
+                    choicesContainer.appendChild(choiceBtn);
+                });
+                
+                document.getElementById('story-outcome').textContent = "Escolha seu próximo passo...";
+            }
+        }
+        
+        function showOutcome(choiceIndex) {
+            document.getElementById('story-outcome').textContent = storyPaths[currentPath].outcomes[choiceIndex];
+            
+            // Resetar o jogo após 5 segundos
+            setTimeout(() => {
+                currentPath = -1;
+                document.getElementById('story-text').textContent = "Você acorda em uma cidade pós-apocalíptica. O ar está pesado e silencioso. Ao seu redor, prédios em ruínas e veículos abandonados. Você ouve um barulho vindo de um beco escuro. O que você faz?";
+                
+                const choicesContainer = document.querySelector('.story-path');
+                choicesContainer.innerHTML = '';
+                
+                const choices = ['Investigar o beco', 'Procurar abrigo', 'Seguir pela rua principal'];
+                choices.forEach((choice, index) => {
+                    const choiceBtn = document.createElement('div');
+                    choiceBtn.classList.add('path-choice');
+                    choiceBtn.textContent = choice;
+                    choiceBtn.onclick = () => choosePath(index + 1);
+                    choicesContainer.appendChild(choiceBtn);
+                });
+                
+                document.getElementById('story-outcome').textContent = "Sua decisão moldará a história...";
+            }, 5000);
+        }
+        
+        // Animação ao rolar a página
+        function animateOnScroll() {
+            const sections = document.querySelectorAll('.section');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight * 0.85) {
+                    section.classList.add('animate');
+                }
+            });
+            
+            timelineItems.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (itemTop < windowHeight * 0.85) {
+                    item.classList.add('animate');
+                }
+            });
+        }
+        
+        // Botão flutuante de voltar ao topo
+        function setupFloatingButton() {
+            const scrollBtn = document.querySelector('.floating-icon');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollBtn.style.display = 'flex';
+                } else {
+                    scrollBtn.style.display = 'none';
+                }
+            });
+            
+            scrollBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            setupFloatingButton();
+            
+            // Animação inicial ao rolar
+            animateOnScroll();
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Efeito de digitação no título
+            const tagline = document.querySelector('.tagline');
+            const originalText = tagline.textContent;
+            tagline.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    tagline.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            setTimeout(typeWriter, 1000);
+        });
+    </script>
 </body>
 </html>
